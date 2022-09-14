@@ -3,7 +3,7 @@
   become: true
   become_method: sudo
   tasks:
-    - name: Install wget with yum
-      yum:
+    - name: Install wget with apt
+      apt:
         name: wget
-        state: present
+        state: latest

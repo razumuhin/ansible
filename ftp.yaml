@@ -1,7 +1,10 @@
-- name: Install ftp package with yum
+- name: Install ftp package with apt
   hosts: nodes
+  become: true
+  become_method: sudo
+  become_user: root
   tasks:
     - name: Install ftp package
-      yum:
+      apt:
         name: ftp*
-        state: present
+        state: latest

@@ -5,5 +5,5 @@
   vars:
     package: vim
   tasks:
-    - name: Install vim package with yum
-      yum: name={{ package }} state=latest
+    - name: Install vim package with apt
+      apt: name={{ package }} state=latest
