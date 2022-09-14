@@ -1,0 +1,7 @@
+- name: Timezone ayarla - Europe/Istanbul
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  community.general.timezone:
+    name: Europe/Istanbul
