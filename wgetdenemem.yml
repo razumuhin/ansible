@@ -1,0 +1,69 @@
+- hosts: all
+  #tags: always 
+  tags: never
+  become: true
+  tasks:
+
+# Bu görev, Sunucu güncellemeleri için hazırlanmıştır..
+  - name: Bu gorev, Ubuntu Linux Update & Upgrade işlemlerini gerçekleştirir
+    ansible.builtin.package:
+        upgrade: dist
+        update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+# Bu gorev, anadolu sunucularına wget yüklemesinini gerçekleştirir.
+- hosts: anadolu
+  become: true
+  tasks:
+   - name: İşletim sistemlerini tespit et.
+     debug: var=ansible_os_family
+   - name: Bu gorev, wget kurulumu yapar.
+     ansible.builtin.package:
+      name: wget kurulumu
+        - wget
+      state: latest
+  tags: 
+   - wget_kur
+# Bu gorev, estu sunucularına apache2 yüklemesinini gerçekleştirir.
+- hosts: estu
+  become: true
+  tasks:
+   - name: apache2 kururulumu
+     ansible.builtin.package:
+      name:
+       - apache2
+       - libapache2-mod-php
+      state: latest
+  tags: 
+   - apache_kur
+
+#-Bu gorev, estu sunucularına html sayfasını kopyalar
+- hosts: estu
+  become: true
+  tasks:
+  - name: kopyalama
+    ansible.builtin.copy:    
+       src: /home/ersinkaya/ansible/devproje/site.html
+       dest: /var/www/html/index.html
+       owner: root
+       group: root
+       mode: '0644'
+  tags: 
+   - html_kopyala
+  #-Bu gorev, anadolu sunucularına dosyaatmayi saglar
+- hosts: depo
+  become: true
+  tasks:
+  - name: kopyalama
+    ansible.builtin.copy:    
+       src: /home/ersinkaya/ansible/devproje/ersinkaya.txtip
+       dest: /
+       owner: root
+       group: root
+       mode: '0644'
+  tags: 
+   - dosya_kopyala
+
+    
+
+

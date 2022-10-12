@@ -1,0 +1,17 @@
+---
+  - hosts : all
+    become : true
+    tasks:
+   
+      - name: Bu görev, apache2 yüklemesini gerçekleştirir
+        apt:
+         name: apache2
+         state: absent
+      - name: bu görev apache için php yüklemesi gercekleştirir
+        apt:
+         name: libapache2-mod-php
+         state: absent
+        when: ansible_distrubution =="Ubuntu"
+         
+      
+
