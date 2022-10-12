@@ -1,0 +1,18 @@
+---
+- hosts: ansible_kontroller
+  connection: local
+  become: yes
+  vars:
+   - repo: 'https://github.com/razumuhin/ansible.git'
+   - hedef: /home/ersinkaya/repo
+  tasks:
+   - name: Bu görev reposutory'i hedefe çeker
+     git:
+      repo: "{{ repo }}"
+      dest: "{{ hedef }}"
+   - name: Bu görev çekilen dosyalari listeler
+     find:
+         paths: "{{ hedef }}"
+     register: listeler
+   - debug:
+      var: listeler
