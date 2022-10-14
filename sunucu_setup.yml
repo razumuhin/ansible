@@ -1,0 +1,11 @@
+
+- name: "Ubuntu 20.04 ayarlari"
+  hosts: all,!ansible_controller 
+  become: yes
+  roles:
+    - update
+    - multipath_errors_solution
+    - disable_swap
+
+
+

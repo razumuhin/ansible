@@ -1,0 +1,11 @@
+- hosts: all,!ansible_controller
+  #tags: always 
+  #tags: never
+  become: true
+  tasks:
+  # Bu görev, Sunucu güncellemeleri için hazırlanmıştır..
+  - name: Bu gorev, Ubuntu Linux Update & Upgrade işlemlerini gerçekleştirir
+    ansible.builtin.package:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
