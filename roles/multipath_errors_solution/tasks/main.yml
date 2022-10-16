@@ -1,4 +1,5 @@
-- name: multipath.conf dosyasına blacklist block ekle
+- name: multipath.conf dosyasina blacklist block ekle
+  tags: multipath
   blockinfile:
     path: /etc/multipath.conf
     block: |

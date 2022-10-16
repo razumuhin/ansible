@@ -1,6 +1,6 @@
 # Bu görev, Sunucu güncellemeleri için hazırlanmıştır..
 - name: Bu gorev, Ubuntu Linux Update & Upgrade işlemlerini gerçekleştirir
-
+  tags: update
   ansible.builtin.package:
     upgrade: dist
     update_cache: yes

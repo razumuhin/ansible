@@ -1,0 +1,8 @@
+- name: Bu görev yetkili kullanici olusturur.
+  tags: user
+  user:
+    name: beylerbeyi
+    group: root
+
+
+
